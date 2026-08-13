@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tobuko — Bookmark Manager</title>
+		<meta
+			name="description"
+			content="Save, organize, and access your bookmarks from anywhere."
+		/>
+
+		<!-- 1. Import Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Syne:wght@400;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- 2. Include Tailwind CSS for layout utility classes -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- 3. Map Tailwind to your custom fonts -->
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['"DM Sans"', "sans-serif"],
+							display: ["Syne", "sans-serif"],
+							mono: ['"DM Mono"', "monospace"],
+						},
+					},
+				},
+			};
+		</script>
+
+		<!-- 4. Define your theme's CSS variables -->
+		<style>
+			:root {
+				--bg: #0f1115;
+				--bg-subtle: #1e293b;
+				--text: #f8fafc;
+				--text-muted: #94a3b8;
+				--text-faint: #475569;
+				--accent: #3b82f6;
+				--border: #1e293b;
+			}
+
+			body {
+				font-family: "DM Sans", sans-serif;
+				background-color: var(--bg);
+				color: var(--text);
+				margin: 0;
+				-webkit-font-smoothing: antialiased;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<div
+				class="min-h-screen"
+				style="background: var(--bg); color: var(--text)"
+			>
+				<nav
+					class="flex items-center justify-between px-6 sm:px-10 py-4 border-b"
+					style="background: var(--bg); border-color: var(--border)"
+				>
+					<a class="flex items-center gap-2.5" href="https://tobuko.github.io/">
+						<span class="font-display text-xl font-bold tracking-tight"
+							>tb</span
+						>
+						<span
+							class="font-display text-sm font-semibold tracking-widest uppercase hidden sm:block"
+							style="color: var(--text-muted)"
+							>Tobuko</span
+						>
+					</a>
+					<div class="flex items-center gap-3">
+						<button
+							class="w-8 h-8 flex items-center justify-center rounded-lg"
+							style="background: var(--bg-subtle); color: var(--text-muted)"
+						>
+							<svg
+								class="w-4 h-4"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								stroke-width="1.5"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+								></path>
+							</svg>
+						</button>
+						<a
+							class="text-sm font-medium px-4 py-1.5 rounded-lg"
+							href="https://tobuko.github.io/login"
+							style="background: var(--accent); color: rgb(255, 255, 255)"
+							>Sign in</a
+						>
+					</div>
+				</nav>
+				<div class="max-w-2xl mx-auto px-6 py-16">
+					<div class="mb-12">
+						<p
+							class="text-xs font-semibold tracking-widest uppercase mb-3"
+							style="color: var(--accent)"
+						>
+							Legal
+						</p>
+						<h1
+							class="font-display text-4xl font-bold mb-3"
+							style="color: var(--text)"
+						>
+							Privacy Policy
+						</h1>
+						<p class="text-sm" style="color: var(--text-faint)">
+							Last updated: August 11, 2026
+						</p>
+					</div>
+					<p
+						class="text-base leading-relaxed mb-12"
+						style="color: var(--text-muted)"
+					>
+						Tobuko is a bookmark manager. We take privacy seriously — your
+						bookmarks are personal, and we built the product around that
+						assumption. This policy explains what data we collect, why, and how
+						we protect it.
+					</p>
+					<div class="flex flex-col gap-10">
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>01</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									What we collect
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								We collect only what's necessary to make Tobuko work: — Your
+								email address and encrypted password (via Supabase Auth) — The
+								bookmarks you save: URL, title, tag, and which collection they
+								belong to — Collection names and whether they are marked private
+								We do not collect browsing history, page content, analytics
+								about how you use the app, or any data beyond what you
+								explicitly save.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>02</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									How we use your data
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								Your data is used exclusively to provide the Tobuko service: —
+								To authenticate you and keep your session active — To store and
+								sync your bookmarks across devices — To enforce private
+								collection access (server-side) We do not use your data for
+								advertising, profiling, or any third-party purpose.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>03</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									Private collections
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								Private collections are protected at the database level, not
+								just visually in the UI. When a collection is marked private,
+								its bookmarks are excluded from API responses until the correct
+								account password is verified in the same session. Even if
+								someone accessed your account token, private bookmark contents
+								would not be returned without re-authentication.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>04</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									Data storage
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								Your data is stored on Supabase (supabase.com), a hosted
+								PostgreSQL service. Supabase stores data in data centers within
+								the region selected at project creation. We do not sell, share,
+								or transfer your data to any third parties.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>05</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									Data retention &amp; deletion
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								You can delete individual bookmarks and collections at any time
+								from within the app. To permanently delete your account and all
+								associated data, contact us at the email below. We will process
+								deletion requests within 30 days.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>06</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									Cookies &amp; tracking
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								Tobuko uses a session cookie to keep you signed in. We do not
+								use advertising cookies, tracking pixels, or any third-party
+								analytics scripts. We do not use Google Analytics or similar
+								services.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>07</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									Changes to this policy
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								If we make material changes to this policy, we will update the
+								date below and, where appropriate, notify you by email.
+								Continued use of Tobuko after changes constitutes acceptance of
+								the updated policy.
+							</div>
+						</div>
+						<div
+							class="pb-10 border-b last:border-b-0"
+							style="border-color: var(--border)"
+						>
+							<div class="flex items-baseline gap-3 mb-3">
+								<span class="font-mono text-xs" style="color: var(--text-faint)"
+									>08</span
+								>
+								<h2
+									class="font-display font-semibold text-xl"
+									style="color: var(--text)"
+								>
+									Contact
+								</h2>
+							</div>
+							<div
+								class="text-sm leading-relaxed whitespace-pre-line pl-7"
+								style="color: var(--text-muted)"
+							>
+								If you have questions or requests related to your privacy,
+								contact us at: privacy@tobuko.github.io
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer
+					class="border-t px-6 py-8 mt-8"
+					style="border-color: var(--border)"
+				>
+					<div
+						class="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4"
+					>
+						<span class="text-sm" style="color: var(--text-faint)"
+							>Tobuko · 2026</span
+						>
+						<div
+							class="flex items-center gap-6 text-sm"
+							style="color: var(--text-muted)"
+						>
+							<a
+								class="hover:underline underline-offset-2"
+								href="https://tobuko.github.io/"
+								>Home</a
+							>
+							<a
+								class="hover:underline underline-offset-2"
+								href="https://tobuko.github.io/login"
+								>Sign in</a
+							>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+	</body>
+</html>

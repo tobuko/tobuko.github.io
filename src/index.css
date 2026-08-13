@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ─────────────────────────────────────────────────── */
+:root {
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+}
+
+/* ── Theme tokens ───────────────────────────────────────────── */
+:root {
+  --bg: #f8f7f4;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1efeb;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.14);
+  --text: #0f1117;
+  --text-muted: rgba(15, 17, 23, 0.5);
+  --text-faint: rgba(15, 17, 23, 0.3);
+  --accent: #002255;
+  --accent-hover: #003380;
+}
+
+.dark {
+  --bg: #0f1117;
+  --bg-surface: #0b0d11;
+  --bg-subtle: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: rgba(255, 255, 255, 0.92);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  --text-faint: rgba(255, 255, 255, 0.25);
+  --accent: #4a7fd4;
+  --accent-hover: #6b9fe8;
+}
+
+/* ── Base ────────────────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+*::-webkit-scrollbar { width: 4px; height: 4px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background-color: var(--border-strong); border-radius: 999px; }
+*::-webkit-scrollbar-thumb:hover { background-color: var(--text-faint); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Utilities ───────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
